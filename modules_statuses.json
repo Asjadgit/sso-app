@@ -1,0 +1,11 @@
+{
+    "Team": true,
+    "Contact": true,
+    "Company": true,
+    "Label": true,
+    "Field": true,
+    "VisibilityLevel": true,
+    "VisibilityGroup": true,
+    "TemplateConfiguration": true,
+    "Filter": true
+}

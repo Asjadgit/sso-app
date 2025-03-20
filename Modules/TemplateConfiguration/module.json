@@ -1,0 +1,11 @@
+{
+    "name": "TemplateConfiguration",
+    "alias": "templateconfiguration",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\TemplateConfiguration\\Providers\\TemplateConfigurationServiceProvider"
+    ],
+    "files": []
+}

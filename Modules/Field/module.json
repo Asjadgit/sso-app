@@ -1,0 +1,11 @@
+{
+    "name": "Field",
+    "alias": "field",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Field\\Providers\\FieldServiceProvider"
+    ],
+    "files": []
+}

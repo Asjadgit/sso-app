@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/visibilitygroup",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\VisibilityGroup\\": "app/",
+            "Modules\\VisibilityGroup\\Database\\Factories\\": "database/factories/",
+            "Modules\\VisibilityGroup\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\VisibilityGroup\\Tests\\": "tests/"
+        }
+    }
+}

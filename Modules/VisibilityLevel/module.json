@@ -1,0 +1,11 @@
+{
+    "name": "VisibilityLevel",
+    "alias": "visibilitylevel",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\VisibilityLevel\\Providers\\VisibilityLevelServiceProvider"
+    ],
+    "files": []
+}

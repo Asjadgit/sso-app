@@ -1,0 +1,11 @@
+{
+    "name": "VisibilityGroup",
+    "alias": "visibilitygroup",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\VisibilityGroup\\Providers\\VisibilityGroupServiceProvider"
+    ],
+    "files": []
+}

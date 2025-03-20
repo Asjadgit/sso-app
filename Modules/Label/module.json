@@ -1,0 +1,11 @@
+{
+    "name": "Label",
+    "alias": "label",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Label\\Providers\\LabelServiceProvider"
+    ],
+    "files": []
+}
