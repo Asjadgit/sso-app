@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('contact_user_follows', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('central_owner_user_id');
             $table->unsignedBigInteger('contact_id');
             $table->timestamps();
 
             // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('central_owner_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
         });
     }

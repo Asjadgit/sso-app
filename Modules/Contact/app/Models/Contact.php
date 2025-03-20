@@ -21,7 +21,7 @@ class Contact extends Model
         'name',
         'first_name',
         'last_name',
-        'owner_user_id',
+        'central_owner_user_id',
         'referred_by',
         'source_contact_id',
     ];
@@ -29,7 +29,7 @@ class Contact extends Model
     // Contact belongs to a User (Owner)
     public function owner()
     {
-        return $this->belongsTo(CentralUser::class, 'owner_user_id');
+        return $this->belongsTo(CentralUser::class, 'central_owner_user_id');
     }
 
     // Self-referencing: Contact referred by another Contact

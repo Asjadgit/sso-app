@@ -123,7 +123,7 @@ class CentralUser extends Authenticatable implements SyncMaster
 
     public function contacts()
     {
-        return $this->hasMany(Contact::class, 'owner_user_id');
+        return $this->hasMany(Contact::class, 'central_owner_user_id');
     }
 
     public function userfollows()
@@ -133,7 +133,7 @@ class CentralUser extends Authenticatable implements SyncMaster
 
     public function ownedCompanies()
     {
-        return $this->hasMany(Company::class, 'owner_user_id');
+        return $this->hasMany(Company::class, 'central_owner_user_id');
     }
 
     // User has many Labels
@@ -150,7 +150,7 @@ class CentralUser extends Authenticatable implements SyncMaster
     // Templates assigned to user
     public function userTemplates()
     {
-        return $this->hasMany(TemplateConfiguration::class, 'central_user_id');
+        return $this->hasMany(TemplateConfiguration::class, 'central_owner_user_id');
     }
 
     // Templates assigned to admin
