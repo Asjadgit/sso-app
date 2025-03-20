@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('custom_filters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Reference to the user who created the filter
+            $table->unsignedBigInteger('central_user_id'); // Reference to the user who created the filter
             $table->string('name'); // Name of the filter
             $table->string('type'); // Type (e.g., contacts, companies, deals)
             $table->json('filter_criteria'); // JSON object containing filter data
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('central_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

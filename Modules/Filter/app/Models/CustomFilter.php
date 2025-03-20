@@ -18,7 +18,7 @@ class CustomFilter extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        'user_id',
+        'central_user_id',
         'name',
         'type',
         'filter_criteria',
