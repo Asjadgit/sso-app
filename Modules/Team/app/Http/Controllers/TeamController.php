@@ -46,7 +46,7 @@ class TeamController extends Controller
         ]);
 
         // Attach members to the team
-        $team->members()->attach($request->members);
+        $team->members()->sync($request->members);
 
         // Load members for the response
         $team->load('members');

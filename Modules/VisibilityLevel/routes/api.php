@@ -8,8 +8,11 @@ use Modules\VisibilityLevel\Http\Controllers\VisibilityLevelController;
 // });
 
 // for managing visibility levels
-Route::get('visibility-levels', [VisibilityLevelController::class, 'index']);
-Route::post('visibility-levels/store', [VisibilityLevelController::class, 'store']);
-Route::get('visibility-levels/{id}/edit', [VisibilityLevelController::class, 'apiedit']);
-Route::put('visibility-levels/{id}/update', [VisibilityLevelController::class, 'apiupdate']);
-Route::get('visibility-levels/{id}/delete', [VisibilityLevelController::class, 'apidestroy']);
+
+Route::middleware(['auth:sanctum'])->group(function(){
+    Route::get('visibility-levels', [VisibilityLevelController::class, 'index']);
+    Route::post('visibility-levels/store', [VisibilityLevelController::class, 'store']);
+    Route::get('visibility-levels/{id}/edit', [VisibilityLevelController::class, 'apiedit']);
+    Route::put('visibility-levels/{id}/update', [VisibilityLevelController::class, 'apiupdate']);
+    Route::get('visibility-levels/{id}/delete', [VisibilityLevelController::class, 'apidestroy']);
+});

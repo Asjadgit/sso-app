@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Modules\Company\Models\Company;
 use Modules\Contact\Models\Contact;
 use Modules\Filter\Models\CustomFilter;
@@ -15,6 +16,7 @@ use Modules\Label\Models\Label;
 use Modules\Team\Models\Team;
 use Modules\TemplateConfiguration\Models\TemplateConfiguration;
 use Modules\VisibilityGroup\Models\VisibilityGroup;
+use Spatie\Permission\Traits\HasRoles;
 use Stancl\Tenancy\Contracts\SyncMaster;
 use Stancl\Tenancy\Database\Concerns\CentralConnection;
 use Stancl\Tenancy\Database\Concerns\ResourceSyncing;
@@ -23,8 +25,7 @@ use Stancl\Tenancy\Database\Models\TenantPivot;
 class CentralUser extends Authenticatable implements SyncMaster
 {
     // Note that we force the central connection on this model
-    use ResourceSyncing, CentralConnection, HasFactory, Notifiable;
-    // use  HasRoles, HasApiTokens;
+    use ResourceSyncing, CentralConnection, HasFactory, Notifiable,HasApiTokens,HasRoles;
     public $table = 'users';
     protected $fillable = [
         'name',

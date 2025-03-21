@@ -12,6 +12,11 @@ Route::get('/', function () {
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'login'])->name('user.login');
 
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/dashboard',[LoginController::class, 'home'])->name('dashboard');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
 // Auth routes
 Route::get('/auth', [AuthController::class, 'show'])->name('auth');
 Route::post('/central-login', [AuthController::class, 'logIn'])->name('central-login');

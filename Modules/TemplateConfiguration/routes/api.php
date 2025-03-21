@@ -7,8 +7,12 @@ use Modules\TemplateConfiguration\Http\Controllers\TemplateConfigurationControll
 //     Route::apiResource('templateconfiguration', TemplateConfigurationController::class)->names('templateconfiguration');
 // });
 
-Route::get('/{entity}/template-configuration', [TemplateConfigurationController::class, 'templateView'])->name('getListViewConfiguration');
+Route::middleware('auth:sanctum')->group(function() {
+    Route::get('templates',[TemplateConfigurationController::class, 'index']);
+    Route::get('/{entity}/template-configuration', [TemplateConfigurationController::class, 'templateView'])->name('getListViewConfiguration');
 
-Route::Post('/{entity}/template-configuration', [TemplateConfigurationController::class, 'store'])->name('saveListViewConfiguration');
+    Route::post('/{entity}/template-configuration', [TemplateConfigurationController::class, 'store'])->name('saveListViewConfiguration');
 
-Route::post('/templates/load-view', [TemplateConfigurationController::class, 'loadViewType']);
+    Route::post('/templates/load-view', [TemplateConfigurationController::class, 'loadViewType']);
+});
+

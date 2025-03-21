@@ -21,13 +21,13 @@ class TemplateConfigurationController extends Controller
     {
         $user = Auth::user();
         $visibilityLevels = VisibilityLevel::all();
-        $templates = TemplateConfiguration::with('admin', 'user', 'visibilityLevels')->where('user_id', $user->id)->orWhere('admin_id', $user->id)->get();
+        $templates = TemplateConfiguration::with('admin', 'user', 'visibilityLevels')->where('central_user_id', $user->id)->orWhere('central_admin_id', $user->id)->get();
         if ($request->wantsJson()) {
             return response()->json([
                 'templates' => $templates,
             ]);
         }
-        return view('templates.index', compact('templates', 'visibilityLevels'));
+        // return view('templates.index', compact('templates', 'visibilityLevels'));
     }
 
     public function create()
@@ -44,7 +44,7 @@ class TemplateConfigurationController extends Controller
 
         $user = auth()->user();
         $isAdmin = $user->hasAnyRole(['Super Admin', 'Admin']);
-        $filterColumn = $isAdmin ? 'admin_id' : 'user_id';
+        $filterColumn = $isAdmin ? 'central_admin_id' : 'central_user_id';
 
         // Convert JSON string to array
         $configData = json_decode($request->configuration, true);
@@ -223,12 +223,18 @@ class TemplateConfigurationController extends Controller
         $entityType = strtolower($entityType);
 
         // Determine the filter column based on the user's role
-        if ($user->hasRole('User')) {
-            $filterColumn = 'user_id';
-        } elseif ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
-            $filterColumn = 'admin_id';
+        // if ($user->hasRole('User')) {
+        //     $filterColumn = 'user_id';
+        // } elseif ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
+        //     $filterColumn = 'admin_id';
+        // } else {
+        //     return response()->json(['error' => 'Unauthorized access'], 403);
+        // }
+
+        if ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
+            $filterColumn = 'central_admin_id';
         } else {
-            return response()->json(['error' => 'Unauthorized access'], 403);
+            $filterColumn = 'central_user_id';
         }
 
         // Fetch available view types for this entity type and user/admin
@@ -277,12 +283,18 @@ class TemplateConfigurationController extends Controller
         $viewType = strtolower($request->viewType);
 
         // Determine which column to filter by based on the user's role
-        if ($user->hasRole('User')) {
-            $filterColumn = 'user_id';
-        } elseif ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
-            $filterColumn = 'admin_id';
+        // if ($user->hasRole('User')) {
+        //     $filterColumn = 'central_user_id';
+        // } elseif ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
+        //     $filterColumn = 'central_admin_id';
+        // } else {
+        //     return response()->json(['error' => 'Unauthorized access'], 403);
+        // }
+
+        if ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
+            $filterColumn = 'central_admin_id';
         } else {
-            return response()->json(['error' => 'Unauthorized access'], 403);
+            $filterColumn = 'central_user_id';
         }
 
         // Fetch the template configuration dynamically for the logged-in user
@@ -307,12 +319,18 @@ class TemplateConfigurationController extends Controller
         $viewType = strtolower($view);
 
         // Determine which column to filter by based on the user's role
-        if ($user->hasRole('User')) {
-            $filterColumn = 'user_id';
-        } elseif ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
+        // if ($user->hasRole('User')) {
+        //     $filterColumn = 'user_id';
+        // } elseif ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
+        //     $filterColumn = 'admin_id';
+        // } else {
+        //     return response()->json(['error' => 'Unauthorized access'], 403);
+        // }
+
+        if ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
             $filterColumn = 'admin_id';
         } else {
-            return response()->json(['error' => 'Unauthorized access'], 403);
+            $filterColumn = 'user_id';
         }
 
         // Fetch the template configuration dynamically for the logged-in user

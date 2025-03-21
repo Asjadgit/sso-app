@@ -13,7 +13,7 @@ class StoreTemplateRequest extends FormRequest
     {
         return [
             'view_type' => 'required|string',
-            'configuration' => 'required|json',
+            'configuration' => 'nullable|json',
             'is_default' => 'nullable|boolean',
             'visibility_levels' => 'nullable|array',
             'visibility_levels.*' => 'exists:visibility_levels,id' // Ensure IDs exist in DB
@@ -24,7 +24,6 @@ class StoreTemplateRequest extends FormRequest
     {
         return [
             'view_type.required' => 'The view type field is required.',
-            'configuration.required' => 'Configuration must be a valid JSON string.',
             'is_default.boolean' => 'Is Default must be true or false.',
             'visibility_levels.array' => 'Visibility levels must be an array.',
             'visibility_levels.*.exists' => 'One or more selected visibility levels do not exist.',
