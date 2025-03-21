@@ -36,7 +36,8 @@
             "Modules\\VisibilityLevel\\": "Modules/VisibilityLevel/app",
             "Modules\\VisibilityGroup\\": "Modules/VisibilityGroup/app",
             "Modules\\TemplateConfiguration\\": "Modules/TemplateConfiguration/app",
-            "Modules\\Filter\\": "Modules/Filter/app"
+            "Modules\\Filter\\": "Modules/Filter/app",
+            "Modules\\RolesAndPermission\\": "Modules/RolesAndPermission/app"
         }
     },
     "autoload-dev": {

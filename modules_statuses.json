@@ -7,5 +7,6 @@
     "VisibilityLevel": true,
     "VisibilityGroup": true,
     "TemplateConfiguration": true,
-    "Filter": true
+    "Filter": true,
+    "RolesAndPermission": true
 }
