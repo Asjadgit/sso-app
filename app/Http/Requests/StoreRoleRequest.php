@@ -22,7 +22,8 @@ class StoreRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:roles,name,'. $this->role,
+            'id' => 'nullable|exists:roles,id', // ID is optional but must exist for updating
+            'name' => 'required|unique:roles,name,'. $this->id,
             'permissions' => 'array',
             'permissions.*' => 'exists:permissions,id'
         ];

@@ -29,11 +29,11 @@ class LoginController extends Controller
         // Generate token
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // return redirect()->route('dashboard');
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-        ]);
+        return redirect()->route('dashboard');
+        // return response()->json([
+        //     'user' => $user,
+        //     'token' => $token,
+        // ]);
     }
 
     public function home()

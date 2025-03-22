@@ -22,7 +22,8 @@ class StorePermissionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:roles,name,'. $this->permission,
+            'id' => 'nullable|exists:permissions,id', // ID is optional but must exist for updating
+            'name' => 'required|unique:permissions,name,' . $this->id, // Ignore unique check for the same record
         ];
     }
 }
